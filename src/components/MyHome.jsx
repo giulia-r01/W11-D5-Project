@@ -30,16 +30,13 @@ const MyHome = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#home" className="text-white">
-                Home
+                <i className="bi bi-house-door text-danger"></i> Home
               </Nav.Link>
               <Nav.Link href="#about" className="text-white">
-                About
+                <i className="bi bi-grid text-danger"></i> Novità
               </Nav.Link>
               <Nav.Link href="#services" className="text-white">
-                Services
-              </Nav.Link>
-              <Nav.Link href="#contact" className="text-white">
-                Contact
+                <i className="bi bi-broadcast text-danger"></i> Radio
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
