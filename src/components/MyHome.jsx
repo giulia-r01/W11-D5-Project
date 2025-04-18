@@ -1,5 +1,16 @@
-import React from "react"
-import { Navbar, Nav, Container, Row, Col, Button } from "react-bootstrap"
+import React, { useState } from "react"
+import {
+  Navbar,
+  Nav,
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormControl,
+} from "react-bootstrap"
+import { useDispatch } from "react-redux"
+import { fetchSongs } from "../redux/actions"
 import MyMain from "./MyMain"
 import StaticCarousel from "./StaticCarousel"
 import StaticEpisode from "./StaticEpisode"
@@ -8,10 +19,20 @@ import MyFooter from "./MyFooter"
 import TextOnlyCards from "./TextOnlyCards"
 
 const MyHome = () => {
+  const dispatch = useDispatch()
+  const [query, setQuery] = useState("")
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (query.trim() !== "") {
+      dispatch(fetchSongs(query))
+    }
+  }
+
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* Navbar mobile */}
-      <Navbar expand="lg" className="d-lg-none" bg="dark" data-bs-theme="dark">
+      <Navbar expand="lg" className="d-lg-none bg-dark" data-bs-theme="dark">
         <Container fluid>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
@@ -21,14 +42,14 @@ const MyHome = () => {
             <img
               src="./assets/logos/music.svg"
               alt="Logo"
-              style={{ filter: "brightness(0) invert(1)" }}
+              className="invert-white"
             />
           </Navbar.Brand>
           <a href="#link-rosso" className="text-red fw-bold">
             Accedi
           </a>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav className="ms-auto flex-column w-100">
               <Nav.Link href="#home" className="text-white">
                 <i className="bi bi-house-door text-danger"></i> Home
               </Nav.Link>
@@ -38,6 +59,15 @@ const MyHome = () => {
               <Nav.Link href="#services" className="text-white">
                 <i className="bi bi-broadcast text-danger"></i> Radio
               </Nav.Link>
+              <Form className="d-flex mt-2 w-100" onSubmit={handleSearch}>
+                <FormControl
+                  type="search"
+                  placeholder="Cerca artisti..."
+                  className="me-2 w-100"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </Form>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -48,7 +78,6 @@ const MyHome = () => {
         <h2 className="pt-2 text-white">Novità</h2>
         <hr className="text-white" />
         <StaticCarousel />
-
         <StaticEpisode />
         <SongList />
         <TextOnlyCards />
@@ -56,7 +85,7 @@ const MyHome = () => {
 
       {/* Layout desktop */}
       <Container fluid className="d-none d-lg-block">
-        <Row>
+        <Row className="g-0">
           {/* Sidebar */}
           <Col lg={2} className="bg-dark vh-100">
             <Nav className="flex-column pt-4">
@@ -69,6 +98,15 @@ const MyHome = () => {
               <Nav.Link href="#services" className="text-white">
                 <i className="bi bi-broadcast text-danger"></i> Radio
               </Nav.Link>
+              <Form className="mt-3 px-2" onSubmit={handleSearch}>
+                <FormControl
+                  type="search"
+                  placeholder="Cerca artisti..."
+                  className="mb-2"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </Form>
             </Nav>
           </Col>
 

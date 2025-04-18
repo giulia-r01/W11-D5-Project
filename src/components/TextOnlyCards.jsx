@@ -5,7 +5,7 @@ const TextOnlyCards = () => {
   return (
     <Container className="py-4">
       <Row className="g-4">
-        {" "}
+        <h2 class="text-white">Altro da esplorare</h2>{" "}
         <Col xs={12} lg={4}>
           <Card className="bg-dark">
             <Card.Body>

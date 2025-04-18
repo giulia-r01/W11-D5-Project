@@ -11,3 +11,12 @@ a {
 .help-color {
   background-color: #1f1f1f !important;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+/* Rende il logo visibile su sfondo scuro */
+.invert-white {
+  filter: brightness(0) invert(1);
+}
