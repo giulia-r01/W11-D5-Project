@@ -9,7 +9,7 @@ const MyFooter = function () {
         </p>
         <p>
           <span className="text-white-50">
-            Copyright <i class="bi bi-c-circle"></i> 2024
+            Copyright <i className="bi bi-c-circle"></i> 2024
           </span>{" "}
           Apple Inc.{" "}
           <span className="text-white-50">Tutti i diritti riservati.</span>
