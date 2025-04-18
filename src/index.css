@@ -1,0 +1,13 @@
+.text-red,
+a {
+  color: #fa586a;
+  text-decoration: none;
+}
+
+#root {
+  background-color: #1f1f1f;
+}
+
+.help-color {
+  background-color: #1f1f1f !important;
+}
